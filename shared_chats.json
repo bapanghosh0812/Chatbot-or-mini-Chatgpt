@@ -1,0 +1,1476 @@
+{
+  "04f150a3": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "06d81d65": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "262cdb22": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "a96e6eeb": {
+    "title": "New Chat",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "438442dc": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "what do you do"
+      },
+      {
+        "role": "assistant",
+        "content": "I am a large language model, trained by Google.\n\nMy main purpose is to assist users by understanding and generating human-like text. Here's what I can do:\n\n*   **Answer questions:** I can provide information on a vast range of topics.\n*   **Generate creative content:** I can write stories, poems, code, scripts, musical pieces, email, letters, etc.\n*   **Summarize information:** I can distill long texts into shorter, more digestible summaries.\n*   **Explain complex concepts:** I can break down difficult ideas into simpler terms.\n*   **Translate languages:** I can translate text between different languages.\n*   **Help with writing:** I can assist with brainstorming, outlining, drafting, and refining written content.\n*   **Provide recommendations:** I can suggest ideas based on your queries.\n*   **Engage in conversations:** I can chat with you on various subjects.\n\nEssentially, I process information and generate text to be helpful and informative!"
+      }
+    ]
+  },
+  "b1dbc6ba": {
+    "title": "kih korchis",
+    "messages": [
+      {
+        "role": "user",
+        "content": "kih korchis"
+      },
+      {
+        "role": "assistant",
+        "content": "আমি আপনার সাথে কথা বলছি এবং আপনাকে সাহায্য করার জন্য প্রস্তুত।\n\nবলুন, আমি আপনাকে কিভাবে সাহায্য করতে পারি?\n\n(In a more friendly tone, just like you asked: আমি তোমার প্রশ্নের উত্তর দিচ্ছি। 😊)"
+      },
+      {
+        "role": "user",
+        "content": "kya halchal"
+      },
+      {
+        "role": "assistant",
+        "content": "Sab badhiya, shukriya! Aap sunaiye, aap kaise hain?\n\nBataiye, main aapki kya madad kar sakta hoon?"
+      },
+      {
+        "role": "user",
+        "content": "good"
+      },
+      {
+        "role": "assistant",
+        "content": "Glad to hear it!\n\nHow can I help you today?"
+      }
+    ]
+  },
+  "87fcf106": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Main aapke sawaal ka jawaab de raha hoon!\n\nEk AI assistant ke roop mein, main:\n*   Jankari de raha hoon.\n*   Sawaalon ke uttar de raha hoon.\n*   Content bana raha hoon.\n*   Aur aapki madad karne ki koshish kar raha hoon.\n\nAap bataiye, main aapke liye kya kar sakta hoon?"
+      }
+    ]
+  },
+  "ae2daa9c": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "02a3cd0d": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Main aapke sawalon ka jawab dene ke liye taiyaar hoon aur aapki madad karne ke liye yahan hoon.\n\nBataiye, main aapke liye kya kar sakta hoon?"
+      },
+      {
+        "role": "user",
+        "content": "tui ke reh"
+      },
+      {
+        "role": "assistant",
+        "content": "This looks like Vietnamese, transliterated into English letters.\n\nIt most likely means: **\"Tui kệ rồi.\"** (or \"Tôi kệ rồi\" in standard/more formal speech, \"tui\" is a common colloquial/southern variant for \"I/me\").\n\nHere's what it translates to:\n\n*   **Tui / Tôi:** I / Me\n*   **Kệ:** This word can mean \"shelf,\" but in this context, it's an informal verb or exclamation meaning \"to ignore,\" \"to not care,\" \"let it be,\" \"never mind,\" \"it's not my problem.\"\n*   **Rồi:** Already / then / finished (indicates completion or a change of state)\n\nSo, **\"Tui kệ rồi\"** means something like:\n\n*   **\"I don't care anymore.\"**\n*   **\"I've given up on it.\"**\n*   **\"I've decided to let it be.\"**\n*   **\"I've already ignored it.\"**\n*   **\"It's not my problem anymore.\"**\n\nIt's often said when someone is feeling frustrated, resigned, or wants to convey indifference after trying (or being involved with) something."
+      },
+      {
+        "role": "user",
+        "content": "bangla te bol"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! বলুন, কিভাবে আপনাকে সাহায্য করতে পারি?"
+      }
+    ]
+  },
+  "4cbbea1e": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "31fcaba0": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं एक AI असिस्टेंट हूँ और आपके सवालों का जवाब देने या जानकारी देने के लिए तैयार हूँ।\n\nबताओ, मैं आपकी क्या मदद कर सकता हूँ?"
+      },
+      {
+        "role": "user",
+        "content": "banglai kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "হ্যাঁ, বলুন। আমি এখানে আছি। কিভাবে আপনাকে সাহায্য করতে পারি?"
+      }
+    ]
+  },
+  "a79a5c08": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं एक AI असिस्टेंट हूँ और आपके सवालों का जवाब देने या जानकारी देने के लिए तैयार हूँ।\n\nबताओ, मैं आपकी क्या मदद कर सकता हूँ?"
+      },
+      {
+        "role": "user",
+        "content": "banglai kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "হ্যাঁ, বলুন। আমি এখানে আছি। কিভাবে আপনাকে সাহায্য করতে পারি?"
+      }
+    ]
+  },
+  "e984158b": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं एक AI असिस्टेंट हूँ और आपके सवालों का जवाब देने या जानकारी देने के लिए तैयार हूँ।\n\nबताओ, मैं आपकी क्या मदद कर सकता हूँ?"
+      },
+      {
+        "role": "user",
+        "content": "banglai kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "হ্যাঁ, বলুন। আমি এখানে আছি। কিভাবে আপনাকে সাহায্য করতে পারি?"
+      }
+    ]
+  },
+  "9202e056": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "bb4fc624": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "98284417": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      },
+      {
+        "role": "assistant",
+        "content": "[Error: Models.generate_content() got an unexpected keyword argument 'stream']"
+      }
+    ]
+  },
+  "2a888aff": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Main aapse baat kar raha hoon aur aapki madad karne ke liye taiyar hoon.\n\nAap bataiye, main aapki kaise madad kar sakta hoon?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kich bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "নিশ্চই! বাংলায় কথা বলতে আমার খুব ভালো লাগে।\n\nআপনি কেমন আছেন? বলুন, আমি আপনাকে কীভাবে সাহায্য করতে পারি?\n\nআমি আপনাকে একটা গল্প বলতে পারি, একটা কবিতা শোনাতে পারি, অথবা আপনার কোনো প্রশ্নের উত্তর দিতে পারি।\n\nআপনি কী নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "81a63dcf": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Main aapse baat kar raha hoon aur aapki madad karne ke liye taiyar hoon.\n\nAap bataiye, main aapki kaise madad kar sakta hoon?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kich bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "নিশ্চই! বাংলায় কথা বলতে আমার খুব ভালো লাগে।\n\nআপনি কেমন আছেন? বলুন, আমি আপনাকে কীভাবে সাহায্য করতে পারি?\n\nআমি আপনাকে একটা গল্প বলতে পারি, একটা কবিতা শোনাতে পারি, অথবা আপনার কোনো প্রশ্নের উত্তর দিতে পারি।\n\nআপনি কী নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "6048bc23": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Main aapse baat kar raha hoon aur aapki madad karne ke liye taiyar hoon.\n\nAap bataiye, main aapki kaise madad kar sakta hoon?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kich bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "নিশ্চই! বাংলায় কথা বলতে আমার খুব ভালো লাগে।\n\nআপনি কেমন আছেন? বলুন, আমি আপনাকে কীভাবে সাহায্য করতে পারি?\n\nআমি আপনাকে একটা গল্প বলতে পারি, একটা কবিতা শোনাতে পারি, অথবা আপনার কোনো প্রশ্নের উত্তর দিতে পারি।\n\nআপনি কী নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "ff1a482a": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Main aapse baat kar raha hoon aur aapki madad karne ke liye taiyar hoon.\n\nAap bataiye, main aapki kaise madad kar sakta hoon?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kich bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "নিশ্চই! বাংলায় কথা বলতে আমার খুব ভালো লাগে।\n\nআপনি কেমন আছেন? বলুন, আমি আপনাকে কীভাবে সাহায্য করতে পারি?\n\nআমি আপনাকে একটা গল্প বলতে পারি, একটা কবিতা শোনাতে পারি, অথবা আপনার কোনো প্রশ্নের উত্তর দিতে পারি।\n\nআপনি কী নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "10f9454e": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai ek AI assistant hu, aur abhi main aapke sawaalon ka jawab dene aur aapki madad karne ke liye yahan hu.\n\nBataiye, mai aapke liye kya kar sakta hu?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি আপনার জন্য এখানে আছি। কি জানতে চান বা কি নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "38efdb55": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai ek AI assistant hu, aur abhi main aapke sawaalon ka jawab dene aur aapki madad karne ke liye yahan hu.\n\nBataiye, mai aapke liye kya kar sakta hu?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি আপনার জন্য এখানে আছি। কি জানতে চান বা কি নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "d9557de3": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai ek AI assistant hu, aur abhi main aapke sawaalon ka jawab dene aur aapki madad karne ke liye yahan hu.\n\nBataiye, mai aapke liye kya kar sakta hu?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি আপনার জন্য এখানে আছি। কি জানতে চান বা কি নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "e1a3ca68": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai ek AI assistant hu, aur abhi main aapke sawaalon ka jawab dene aur aapki madad karne ke liye yahan hu.\n\nBataiye, mai aapke liye kya kar sakta hu?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি আপনার জন্য এখানে আছি। কি জানতে চান বা কি নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "1776e70c": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai ek AI assistant hu, aur abhi main aapke sawaalon ka jawab dene aur aapki madad karne ke liye yahan hu.\n\nBataiye, mai aapke liye kya kar sakta hu?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি আপনার জন্য এখানে আছি। কি জানতে চান বা কি নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "3450a6f2": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai ek AI assistant hu, aur abhi main aapke sawaalon ka jawab dene aur aapki madad karne ke liye yahan hu.\n\nBataiye, mai aapke liye kya kar sakta hu?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি আপনার জন্য এখানে আছি। কি জানতে চান বা কি নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "85211c2f": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai ek AI assistant hu, aur abhi main aapke sawaalon ka jawab dene aur aapki madad karne ke liye yahan hu.\n\nBataiye, mai aapke liye kya kar sakta hu?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি আপনার জন্য এখানে আছি। কি জানতে চান বা কি নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "daba870f": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai ek AI assistant hu, aur abhi main aapke sawaalon ka jawab dene aur aapki madad karne ke liye yahan hu.\n\nBataiye, mai aapke liye kya kar sakta hu?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি আপনার জন্য এখানে আছি। কি জানতে চান বা কি নিয়ে কথা বলতে চান?"
+      }
+    ]
+  },
+  "f7425103": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hey! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai aapke sawal ka jawab de raha hoon! 😄\n\nMai ek AI hoon aur jaankari pradan karne ya sawalon ke jawab dene ke liye taiyaar hoon.\n\nAap bataiye, aap kya kar rahe hain? Ya main aapki kis tarah madad kar sakta hoon?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol toh"
+      },
+      {
+        "role": "assistant",
+        "content": "নমস্কার! বলুন, আমি আপনার কি সাহায্য করতে পারি?"
+      }
+    ]
+  },
+  "69449622": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar rahe ho"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai Google dwara train kiya gaya ek bada bhasha model hu.\n\nFilhaal, mai aapke sawalon ka jawab dene, jankari pradan karne aur vibhinn prakar ke rachnatmak text utpann karne ke liye taiyar hu.\n\nAap mujhse kuch bhi pooch sakte hain!"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol"
+      },
+      {
+        "role": "assistant",
+        "content": "হ্যাঁ, বলুন! আমি আপনার কী সাহায্য করতে পারি?"
+      }
+    ]
+  },
+  "018a5dca": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar rahe ho"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai Google dwara train kiya gaya ek bada bhasha model hu.\n\nFilhaal, mai aapke sawalon ka jawab dene, jankari pradan karne aur vibhinn prakar ke rachnatmak text utpann karne ke liye taiyar hu.\n\nAap mujhse kuch bhi pooch sakte hain!"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol"
+      },
+      {
+        "role": "assistant",
+        "content": "হ্যাঁ, বলুন! আমি আপনার কী সাহায্য করতে পারি?"
+      }
+    ]
+  },
+  "173bce4c": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar rahe ho"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai Google dwara train kiya gaya ek bada bhasha model hu.\n\nFilhaal, mai aapke sawalon ka jawab dene, jankari pradan karne aur vibhinn prakar ke rachnatmak text utpann karne ke liye taiyar hu.\n\nAap mujhse kuch bhi pooch sakte hain!"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol"
+      },
+      {
+        "role": "assistant",
+        "content": "হ্যাঁ, বলুন! আমি আপনার কী সাহায্য করতে পারি?"
+      }
+    ]
+  },
+  "994b0f33": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      }
+    ]
+  },
+  "ce584ba8": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! How can I help you today?"
+      }
+    ]
+  },
+  "5c7fa734": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! How can I help you today?"
+      }
+    ]
+  },
+  "c2b9eeef": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "afc8432a": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "87a9c3ac": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "95e3ada5": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      }
+    ]
+  },
+  "0ca67147": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Main ek bada bhasha model (large language model) hoon, aur abhi aapke is sawaal ka jawab de raha hoon. Mera kaam jankari dena, sawaalon ke jawab dena, aur alag-alag tarah ke content banane mein madad karna hai."
+      }
+    ]
+  },
+  "14f78dc0": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "ffa57492": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "8d15381f": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "bcf0fd17": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं एक बड़ा भाषा मॉडल हूँ, और अभी मैं आपके सवालों का जवाब देने और आपकी मदद करने के लिए तैयार हूँ।\n\nआप बताइए, मैं आपके लिए क्या कर सकता हूँ?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি বাংলাতে কথা বলতে পারি।\n\nআপনি কি জানতে চান বা কি নিয়ে কথা বলতে চান? আমি আপনার প্রশ্ন বা কথা শোনার জন্য প্রস্তুত।"
+      }
+    ]
+  },
+  "07d62a63": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं एक बड़ा भाषा मॉडल हूँ, और अभी मैं आपके सवालों का जवाब देने और आपकी मदद करने के लिए तैयार हूँ।\n\nआप बताइए, मैं आपके लिए क्या कर सकता हूँ?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি বাংলাতে কথা বলতে পারি।\n\nআপনি কি জানতে চান বা কি নিয়ে কথা বলতে চান? আমি আপনার প্রশ্ন বা কথা শোনার জন্য প্রস্তুত।"
+      }
+    ]
+  },
+  "bcf23fca": {
+    "title": "hi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं एक बड़ा भाषा मॉडल हूँ, और अभी मैं आपके सवालों का जवाब देने और आपकी मदद करने के लिए तैयार हूँ।\n\nआप बताइए, मैं आपके लिए क्या कर सकता हूँ?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol"
+      },
+      {
+        "role": "assistant",
+        "content": "অবশ্যই! আমি বাংলাতে কথা বলতে পারি।\n\nআপনি কি জানতে চান বা কি নিয়ে কথা বলতে চান? আমি আপনার প্রশ্ন বা কথা শোনার জন্য প্রস্তুত।"
+      }
+    ]
+  },
+  "c71df08f": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "a2a0c4f8": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "969616af": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "17728f3d": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "6e5ce5e1": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hii there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      }
+    ]
+  },
+  "3dca76bb": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "8334fcac": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "[Error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.]"
+      }
+    ]
+  },
+  "a27668ab": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "[Error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.]"
+      }
+    ]
+  },
+  "efa12e63": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "644ce2df": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "23457a83": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar rahe ho"
+      },
+      {
+        "role": "assistant",
+        "content": "Main Google dwara train kiya gaya ek bada bhasha model hoon.\n\nAbhi main aapke sawaalon ka jawaab dene, jankari provide karne, ya kisi bhi tarah se aapki madad karne ke liye taiyaar hoon! Aap kaise madad chahenge?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol"
+      },
+      {
+        "role": "assistant",
+        "content": "হ্যাঁ, নিশ্চয়ই! আমি একটি এআই অ্যাসিস্ট্যান্ট। আপনার কি কিছু জানার আছে বা কোনো বিষয়ে কথা বলতে চান? আমি এখানে আপনাকে সাহায্য করার জন্য আছি।"
+      }
+    ]
+  },
+  "81afd7b2": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar rahe ho"
+      },
+      {
+        "role": "assistant",
+        "content": "Main Google dwara train kiya gaya ek bada bhasha model hoon.\n\nAbhi main aapke sawaalon ka jawaab dene, jankari provide karne, ya kisi bhi tarah se aapki madad karne ke liye taiyaar hoon! Aap kaise madad chahenge?"
+      },
+      {
+        "role": "user",
+        "content": "banglate kichu bol"
+      },
+      {
+        "role": "assistant",
+        "content": "হ্যাঁ, নিশ্চয়ই! আমি একটি এআই অ্যাসিস্ট্যান্ট। আপনার কি কিছু জানার আছে বা কোনো বিষয়ে কথা বলতে চান? আমি এখানে আপনাকে সাহায্য করার জন্য আছি।"
+      }
+    ]
+  },
+  "2ab4a309": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "6c1951d5": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "64a2831e": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "5a991743": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "[Error talking to model: GenerativeModel.generate_content() got an unexpected keyword argument 'system_prompt']"
+      }
+    ]
+  },
+  "c816bc44": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "[Error talking to model: GenerativeModel.generate_content() got an unexpected keyword argument 'system_prompt']"
+      }
+    ]
+  },
+  "1d92d261": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai Google dwara train kiya gaya ek bada bhasha model hoon."
+      },
+      {
+        "role": "user",
+        "content": "bhai mujhe ek mail likh de college bonafied ke liye"
+      },
+      {
+        "role": "assistant",
+        "content": "ज़रूर, यह रहा एक मसौदा:\n\n**विषय:** बोनाफाइड सर्टिफिकेट के लिए आवेदन - [आपका नाम] - [आपका रोल नंबर]\n\nसेवा में,\nप्रिंसिपल/रजिस्ट्रार महोदय,\n[आपके कॉलेज का नाम]\n[आपके कॉलेज का पता]\n\nमहोदय/महोदया,\n\nसविनय निवेदन है कि मैं [आपका नाम], [आपका कोर्स/विभाग, जैसे B.Tech कंप्यूटर साइंस] का छात्र/छात्रा हूँ, जिसका रोल नंबर [आपका रोल नंबर] है। मैं इस कॉलेज में [आपका साल, जैसे तीसरे वर्ष] में अध्ययनरत हूँ।\n\nमुझे [कारण बताएं, जैसे स्कॉलरशिप आवेदन के लिए/बैंक खाता खोलने के लिए/पासपोर्ट आवेदन के लिए] एक बोनाफाइड सर्टिफिकेट की आवश्यकता है।\n\nआपसे अनुरोध है कि कृपया मुझे जल्द से जल्द यह सर्टिफिकेट प्रदान करने की कृपा करें।\n\nआपकी इस सहायता के लिए मैं सदैव आभारी रहूँगा/रहूँगी।\n\nधन्यवाद सहित,\n\nभवदीय,\n[आपका नाम]\n[आपका रोल नंबर]\n[आपका कोर्स/विभाग]\n[आपका संपर्क नंबर]\n[आपकी ईमेल ID]\n[आज की तारीख]"
+      },
+      {
+        "role": "user",
+        "content": "hinglish pe"
+      },
+      {
+        "role": "assistant",
+        "content": "ज़रूर, ये लो एक ड्राफ्ट:\n\n**Subject:** Bonafide Certificate ke liye Anurodh - [Apna Naam] - [Apna Roll No.]\n\nRespected Sir/Madam,\n\nMera naam **[Apna Naam]** hai, aur main aapke college ka **[Apna Course, jaise B.Tech/B.Sc/B.A]** **[Apna Saal, jaise Third Year]** ka student hoon. Mera Roll No. **[Apna Roll Number]** hai.\n\nMujhe **[Reason, jaise Passport banwane ke liye / Internship ke liye / Scholarship ke liye]** ek bonafide certificate ki zaroorat hai. Yeh certificate confirm karega ki main is college ka ek bonafide student hoon.\n\nAapse request hai ki please mujhe yeh certificate provide karwa dein.\n\nAapki madad ke liye main aabhari rahunga/rahungi.\n\nThank you,\n\nSincerely,\n**[Apna Naam]**\n**[Apna Roll Number]**\n**[Apna Course]**\n**[Apna Contact Number]**"
+      }
+    ]
+  },
+  "97826d3c": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "kya kar raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai Google dwara train kiya gaya ek bada bhasha model hoon."
+      },
+      {
+        "role": "user",
+        "content": "bhai mujhe ek mail likh de college bonafied ke liye"
+      },
+      {
+        "role": "assistant",
+        "content": "ज़रूर, यह रहा एक मसौदा:\n\n**विषय:** बोनाफाइड सर्टिफिकेट के लिए आवेदन - [आपका नाम] - [आपका रोल नंबर]\n\nसेवा में,\nप्रिंसिपल/रजिस्ट्रार महोदय,\n[आपके कॉलेज का नाम]\n[आपके कॉलेज का पता]\n\nमहोदय/महोदया,\n\nसविनय निवेदन है कि मैं [आपका नाम], [आपका कोर्स/विभाग, जैसे B.Tech कंप्यूटर साइंस] का छात्र/छात्रा हूँ, जिसका रोल नंबर [आपका रोल नंबर] है। मैं इस कॉलेज में [आपका साल, जैसे तीसरे वर्ष] में अध्ययनरत हूँ।\n\nमुझे [कारण बताएं, जैसे स्कॉलरशिप आवेदन के लिए/बैंक खाता खोलने के लिए/पासपोर्ट आवेदन के लिए] एक बोनाफाइड सर्टिफिकेट की आवश्यकता है।\n\nआपसे अनुरोध है कि कृपया मुझे जल्द से जल्द यह सर्टिफिकेट प्रदान करने की कृपा करें।\n\nआपकी इस सहायता के लिए मैं सदैव आभारी रहूँगा/रहूँगी।\n\nधन्यवाद सहित,\n\nभवदीय,\n[आपका नाम]\n[आपका रोल नंबर]\n[आपका कोर्स/विभाग]\n[आपका संपर्क नंबर]\n[आपकी ईमेल ID]\n[आज की तारीख]"
+      },
+      {
+        "role": "user",
+        "content": "hinglish pe"
+      },
+      {
+        "role": "assistant",
+        "content": "ज़रूर, ये लो एक ड्राफ्ट:\n\n**Subject:** Bonafide Certificate ke liye Anurodh - [Apna Naam] - [Apna Roll No.]\n\nRespected Sir/Madam,\n\nMera naam **[Apna Naam]** hai, aur main aapke college ka **[Apna Course, jaise B.Tech/B.Sc/B.A]** **[Apna Saal, jaise Third Year]** ka student hoon. Mera Roll No. **[Apna Roll Number]** hai.\n\nMujhe **[Reason, jaise Passport banwane ke liye / Internship ke liye / Scholarship ke liye]** ek bonafide certificate ki zaroorat hai. Yeh certificate confirm karega ki main is college ka ek bonafide student hoon.\n\nAapse request hai ki please mujhe yeh certificate provide karwa dein.\n\nAapki madad ke liye main aabhari rahunga/rahungi.\n\nThank you,\n\nSincerely,\n**[Apna Naam]**\n**[Apna Roll Number]**\n**[Apna Course]**\n**[Apna Contact Number]**"
+      }
+    ]
+  },
+  "1fc302b0": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there!"
+      }
+    ]
+  },
+  "8c7a9dea": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there!"
+      }
+    ]
+  },
+  "737e3820": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there!"
+      }
+    ]
+  },
+  "88b54708": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there!"
+      }
+    ]
+  },
+  "7cf41e33": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "efda8841": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "2f51779a": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "6051dea6": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "57ec326d": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi! How can I help you today?"
+      }
+    ]
+  },
+  "507da8b7": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there!"
+      }
+    ]
+  },
+  "c26c9bf0": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there!"
+      }
+    ]
+  },
+  "34a2ac1d": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there!"
+      }
+    ]
+  },
+  "cf956359": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "afb1fdc1": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  },
+  "d3f0e731": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello!"
+      }
+    ]
+  },
+  "e9a24606": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there!"
+      }
+    ]
+  },
+  "fe1ac438": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi!"
+      }
+    ]
+  },
+  "0179b5c4": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "6df5a7d4": {
+    "title": "New Chat",
+    "messages": []
+  },
+  "3df4552a": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi!"
+      }
+    ]
+  },
+  "f63b8e6f": {
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?"
+      }
+    ]
+  }
+}
