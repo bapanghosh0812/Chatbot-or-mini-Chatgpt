@@ -1,0 +1,8 @@
+streamlit==1.25.0
+fpdf==1.7.2
+requests==2.31.0
+googletrans==4.0.0-rc1
+langdetect==1.0.9
+autocorrect==2.6.0
+google-generative-ai==0.3.0
+
