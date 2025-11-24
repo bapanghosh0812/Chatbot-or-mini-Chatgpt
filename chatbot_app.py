@@ -9,7 +9,7 @@ from typing import List, Generator
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Optional libs (fail gracefully)
+# Optional libs 
 try:
     from langdetect import detect
 except Exception:
@@ -31,7 +31,7 @@ except Exception:
     translator = None
     TRANSLATE_AVAILABLE = False
 
-# --- SAFE GENERATE (FINAL FIX) ---
+# --- SAFE GENERATE ---
 def safe_generate(messages, system_instruction: str = "", max_retries: int = 2):
     # 1. Quick check: Is SDK loaded?
     if not globals().get("genai"):
@@ -63,9 +63,8 @@ def safe_generate(messages, system_instruction: str = "", max_retries: int = 2):
 
     last_exc = None
     
-    # 5. Model Instance Creation (Correct Way)
+    # 5. Model Instance Creation
     try:
-        # Hum fresh library object (lib_genai) use kar rahe hain class create karne ke liye
         if system_instruction:
             model_instance = lib_genai.GenerativeModel(
                 model_name=MODEL_NAME,
@@ -78,7 +77,7 @@ def safe_generate(messages, system_instruction: str = "", max_retries: int = 2):
         yield f"[System Error] Model setup failed: {e}"
         return
 
-    # 6. Generate with History (Streaming)
+    # 6. Generate with History 
     try:
         response = model_instance.generate_content(gemini_contents, stream=True)
         for chunk in response:
@@ -100,7 +99,7 @@ def safe_generate(messages, system_instruction: str = "", max_retries: int = 2):
         last_exc = e
 
     yield f"[LLM ERROR] Could not generate response. Details: {str(last_exc)}"
-# requests used for font download fallback (optional)
+# requests used for font download fallback
 try:
     import requests
 except Exception:
@@ -370,7 +369,7 @@ def run_summarizer_agent(context: str) -> str:
         logging.warning("Summarizer agent failed: %s", e)
         return f"[Summarizer Agent error: {e}]"
 
-# ---------------- model streaming (UPDATED) ----------------
+# ---------------- model streaming ----------------
 def ask_gemini_smart_stream(user_text: str, system_prompt: str = "", history: List[dict] = None):
     # language detection / autocorrect / translation
     lang = detect_language(user_text) if detect else None
@@ -389,7 +388,6 @@ def ask_gemini_smart_stream(user_text: str, system_prompt: str = "", history: Li
 
     acc = ""
     try:
-        # Pass system_prompt explicitly as instruction, and the full messages payload
         for out in safe_generate(messages_payload, system_instruction=system_prompt):
             if out:
                 acc += out
@@ -416,7 +414,6 @@ def ask_gemini_smart_stream(user_text: str, system_prompt: str = "", history: Li
 # ---------------- Streamlit UI ----------------
 st.set_page_config(page_title="MINI CHATBOT", page_icon="🤖", layout="wide")
 
-# suppress browser "Unrecognized feature" spam (Permissions-Policy) — expanded list
 st.markdown("""
 <meta http-equiv="Permissions-Policy"
  content="
@@ -443,7 +440,6 @@ st.markdown("""
  " />
 """, unsafe_allow_html=True)
 
-# Keep header spacing and footer small; removed the problematic global hide CSS
 st.markdown("""
 <style>
     .main .block-container { padding-top: 78px !important; }
@@ -481,7 +477,6 @@ except Exception:
         qp = {}
 
 # --- 1. NEW: HANDLE LOADING SHARED CHAT FROM LINK ---
-# Yeh logic missing tha, isliye chat khali aa rahi thi
 if "share" in qp:
     try:
         sid = qp["share"] if isinstance(qp["share"], str) else qp["share"][0]
@@ -505,7 +500,6 @@ if "edit" in qp:
     except Exception:
         pass
 
-    # URL clean karo
     new_qp = dict(qp)
     if "edit" in new_qp:
         del new_qp["edit"]
@@ -616,7 +610,7 @@ with st.sidebar:
                 st.session_state["options_target"] = None
                 st.rerun()
             
-            # Share (Copy Link) - CORRECTED INDENTATION
+            # Share (Copy Link) 
             if st.button("🔗 Share Chat", key="opt_share", use_container_width=True):
                 chat_data = st.session_state["chats"][t]
                 sid = save_shared_chat(chat_data["title"], chat_data["messages"])
@@ -639,7 +633,6 @@ with st.sidebar:
 
     st.write("---")
     
-    # PDF Logic
     cur = st.session_state["current"]
     msgs = st.session_state["chats"][cur]["messages"]
     if msgs:
@@ -656,11 +649,10 @@ with st.sidebar:
     role = st.selectbox("Agent role", ["General Assistant", "Study Buddy", "Resume Coach", "Code Helper", "Summarizer"], key="role_select")
     st.session_state["agent_role"] = role
 
-# ---------------- FINAL NATIVE POPUP (100% Working Copy & Close) ----------------
+# ---------------- FINAL NATIVE POPUP  ----------------
 if st.session_state.get("open_share_popup") and st.session_state.get("share_link"):
     link = st.session_state['share_link']
     
-    # 1. CSS: Isse hum Native Streamlit Box ko "Popup" jaisa banayenge
     st.markdown("""
     <style>
         .stApp {
@@ -696,18 +688,14 @@ if st.session_state.get("open_share_popup") and st.session_state.get("share_link
     </style>
     """, unsafe_allow_html=True)
 
-    # 2. Content: Native Widgets (Jo kabhi fail nahi hote)
-    # Hum 'expander' use kar rahe hain kyunki isko CSS se popup banana aasaan hai
     with st.expander("Share Popup", expanded=True):
         st.markdown("<h3 style='text-align:center; margin-top:0;'>Link Generated! 🎉</h3>", unsafe_allow_html=True)
         st.markdown("<p style='text-align:center; color:gray; font-size:13px;'>Share this link with others</p>", unsafe_allow_html=True)
         
-        # --- ASLI COPY BUTTON (Top-Right corner pe icon aayega) ---
         st.code(link, language="text")
         
         st.caption("👆 The ‘copy’ icon is at the corner of the box.")
         
-        # --- CLOSE BUTTON ---
         if st.button("❌ Close Popup", use_container_width=True):
             st.session_state["open_share_popup"] = False
             st.rerun()
@@ -715,7 +703,6 @@ if st.session_state.get("open_share_popup") and st.session_state.get("share_link
 # ---------------- FINAL HEADER & TELEPORT BUTTON ----------------
 st.markdown("""
 <style>
-    /* 1. Header Strip (White Background) */
     .fixed-header {
         position: fixed;
         top: 0; left: 0; right: 0;
@@ -728,13 +715,10 @@ st.markdown("""
         padding-left: 280px; 
     }
     
-    /* 2. Hide Default Streamlit Header */
     header[data-testid="stHeader"] { display: none; }
     
-    /* 3. Main Content Adjustment */
     .main .block-container { padding-top: 80px !important; }
 
-    /* 4. TELEPORT MAGIC: Target the Share Button inside Sidebar */
     [data-testid="stSidebar"] [data-testid="stVerticalBlock"] div.stButton:has(button[title="Share Chat"]) {
         position: fixed !important;
         top: 12px !important;
@@ -767,25 +751,22 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# populate header share input if share_link present and pass open flag
 _latest = ""
 _open_flag = False
 if st.session_state.get("share_link"):
     _latest = html.escape(st.session_state["share_link"].get("link", "")) if isinstance(st.session_state["share_link"], dict) else html.escape(str(st.session_state["share_link"]))
 if st.session_state.get("open_share_popup"):
     _open_flag = True
-    # clear flag so it doesn't reopen again on next rerun
     st.session_state["open_share_popup"] = False
 
 st.markdown(f"<script>window._latestShareLink = '{_latest}'; window._openSharePopup = {str(_open_flag).lower()}; try{{ var el=document.getElementById('headerShareInput'); if(el) el.value='{_latest}'; }}catch(e){{}}</script>", unsafe_allow_html=True)
 
-# ---------------- MAIN CHAT AREA (Fixed Visibility & Position) ----------------
+# ---------------- MAIN CHAT AREA  ----------------
 
 import streamlit as st
-import time # Imported just to simulate the bot delay
+import time 
 
 # --- 1. SESSION STATE INITIALIZATION ---
-# Initialize chat history and flags if they don't exist
 if "chats" not in st.session_state:
     st.session_state["chats"] = {"default": {"messages": []}}
 if "current" not in st.session_state:
@@ -793,11 +774,10 @@ if "current" not in st.session_state:
 if "editing_index" not in st.session_state:
     st.session_state["editing_index"] = None
 
-# Get current chat data
 cur = st.session_state["current"]
 chat = st.session_state["chats"][cur]
 
-# ---------------- CSS FOR EDIT BUTTON & SPINNER ----------------
+# ---------------- CSS FOR EDIT BUTTON ----------------
 st.markdown("""
 <style>
     div[data-testid="stChatMessage"] div.stButton button {
@@ -819,37 +799,30 @@ with chat_container:
     for index, m in enumerate(chat["messages"]):
         with st.chat_message(m["role"]):
             
-            # 1. Check: Kya yeh message edit ho raha hai?
             if st.session_state.get("editing_index") == index:
                 
-                # --- EDIT MODE ---
                 new_text = st.text_area("Edit message:", value=m["content"], height=100, key=f"edit_area_{index}")
                 c1, c2 = st.columns([1, 4])
                 
-                # Save Button
                 with c1:
                     if st.button("✅ Save", key=f"save_{index}", use_container_width=True):
                         chat["messages"][index]["content"] = new_text
-                        chat["messages"] = chat["messages"][:index + 1] # Future delete
+                        chat["messages"] = chat["messages"][:index + 1] 
                         st.session_state["chats"][cur] = chat
                         st.session_state["editing_index"] = None
                         st.rerun()
                 
-                # Cancel Button
                 with c2:
                     if st.button("❌ Cancel", key=f"cancel_{index}"):
                         st.session_state["editing_index"] = None
                         st.rerun()
 
-            # 2. Else block bilkul 'if' ke seedh mein hai
             else:
-                # --- NORMAL MODE ---
                 if m["role"] == "user":
                     col1, col2 = st.columns([19, 1])
                     with col1:
                         st.markdown(m["content"].replace("\n", "  \n"))
                     with col2:
-                        # Edit button tabhi dikhega jab edit mode OFF ho
                         if st.session_state.get("editing_index") is None:
                             if st.button("✏️", key=f"edit_btn_{index}", help="Edit"):
                                 st.session_state["editing_index"] = index
@@ -871,15 +844,12 @@ if chat["messages"] and chat["messages"][-1]["role"] == "user":
         with st.chat_message("assistant"):
             placeholder = st.empty()
             
-            # Retrieve Temp Data
             vision_data = st.session_state.get("temp_vision_input")
             pdf_data = st.session_state.get("temp_pdf_content", "")
 
-            # --- ICONIC ANIMATION FUNCTION ---
             def render_animation(text, icon):
                 anim_html = f"""
                 <style>
-                    /* Container for Spinner and Icon */
                     .loader-box {{
                         position: relative;
                         width: 40px;
@@ -889,34 +859,29 @@ if chat["messages"] and chat["messages"][-1]["role"] == "user":
                         justify-content: center;
                     }}
 
-                    /* 1. The Fast Spinning Ring */
                     .speed-ring {{
                         position: absolute;
                         width: 100%;
                         height: 100%;
                         border: 3px solid transparent;
                         border-top: 3px solid #3498db;
-                        border-right: 3px solid #e74c3c; /* Do rang taaki speed dikhe */
+                        border-right: 3px solid #e74c3c; 
                         border-radius: 50%;
                         animation: fast-spin 0.6s linear infinite, color-shift 3s linear infinite;
                         box-shadow: 0 0 5px rgba(0,0,0,0.1);
                     }}
 
-                    /* 2. The Static Icon (Beech mein fix) */
                     .static-icon {{
                         position: relative;
-                        font-size: 14px; /* Chota size */
+                        font-size: 14px; 
                         z-index: 2;
-                        /* No animation here -> Icon nahi ghumega */
                     }}
 
-                    /* 3. Super Fast Spin Animation */
                     @keyframes fast-spin {{ 
                         0% {{ transform: rotate(0deg); }} 
                         100% {{ transform: rotate(360deg); }} 
                     }}
                     
-                    /* 4. Iconic Color Shift */
                     @keyframes color-shift {{
                         0% {{ border-top-color: #3498db; border-right-color: #e74c3c; }}
                         25% {{ border-top-color: #9b59b6; border-right-color: #2ecc71; }}
@@ -925,7 +890,6 @@ if chat["messages"] and chat["messages"][-1]["role"] == "user":
                         100% {{ border-top-color: #3498db; border-right-color: #e74c3c; }}
                     }}
 
-                    /* 5. Blinking Dots */
                     .dot {{ animation: blink 1.4s infinite both; font-weight: 800; }}
                     .d1 {{ animation-delay: 0s; }}
                     .d2 {{ animation-delay: 0.2s; }}
