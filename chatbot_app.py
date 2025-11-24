@@ -34,13 +34,11 @@ except Exception:
 # --- SAFE GENERATE (FINAL FIX) ---
 def safe_generate(messages, system_instruction: str = "", max_retries: int = 2):
     # 1. Quick check: Is SDK loaded?
-    # Hum global 'genai' check karenge bas confirmation ke liye
     if not globals().get("genai"):
         yield "[DEMO MODE] Gemini API Key missing or SDK not loaded.\n"
         return
 
     # 2. Local Import to avoid variable conflict
-    # Kyunki tumne bahar 'genai' variable ko Model bana diya hai, hum library ko dobara import karenge
     import google.generativeai as lib_genai
 
     # 3. History Conversion (Streamlit -> Gemini Format)
@@ -128,12 +126,6 @@ SHARED_FILE = "shared_chats.json"
 from os import getenv
 import traceback
 
-# Primary place to put the key: env var GEMINI_API_KEY (or FALLBACK_HARDCODED_KEY for quick local dev)
-# ---------------- GEMINI KEY (env preferred) ----------------
-from os import getenv
-import traceback
-
-# Primary place to put the key
 FALLBACK_HARDCODED_KEY = None
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or FALLBACK_HARDCODED_KEY
 MODEL_NAME = os.getenv("MODEL_NAME") or "gemini-2.5-flash"
@@ -152,7 +144,6 @@ if GEMINI_API_KEY:
         except Exception:
             pass
         
-        # --- CHANGE IS HERE: Initialize the model object, not just the module ---
         genai = _genai.GenerativeModel(MODEL_NAME) 
         model_available = True
         logging.info(f"Gemini SDK loaded. Model: {MODEL_NAME}")
@@ -386,19 +377,13 @@ def ask_gemini_smart_stream(user_text: str, system_prompt: str = "", history: Li
     corrected = autocorrect_text(user_text, lang)
     model_input = maybe_translate_for_model(corrected, lang)
 
-    # 1. Build the full message list for the model
-    # Start with existing history (excluding the very last user message because we act on 'user_text')
     messages_payload = []
     
     if history:
-        # Deep copy to avoid messing up session state
         import copy
-        # Filter out the current pending prompt if it's already in history to avoid duplication
-        # But usually, we pass the HISTORY before the current prompt.
         messages_payload = copy.deepcopy(history)
 
     # Append the current processed/translated user prompt
-    # Note: If the last message in history is already the user prompt, don't add it again.
     if not messages_payload or messages_payload[-1]["content"] != model_input:
         messages_payload.append({"role": "user", "content": model_input})
 
@@ -501,8 +486,6 @@ if "share" in qp:
     try:
         sid = qp["share"] if isinstance(qp["share"], str) else qp["share"][0]
         
-        # Agar chat pehle se loaded nahi hai, toh file se load karo
-        # Ya agar user kisi aur chat pe hai, toh switch karo
         loaded_data = load_shared_chat(sid)
         if loaded_data:
             st.session_state["chats"][sid] = loaded_data
@@ -555,50 +538,11 @@ if "create_share" in qp:
         st.query_params.update(new_qp)
         st.rerun()
     except: pass
-
-# ---------------- If in edit-mode: render only the edit UI (early return) ----------------
-if st.session_state.get("editing_index") is not None:
-    cur = st.session_state["current"]
-    chat = st.session_state["chats"].get(cur, {"title": "New Chat", "messages": []})
-    idx = st.session_state["editing_index"]
-
-    can_edit = False
-    if isinstance(idx, int) and 0 <= idx < len(chat["messages"]):
-        can_edit = (chat["messages"][idx]["role"] == "user")
-
-    if not can_edit:
-        st.session_state["editing_index"] = None
-    else:
-        st.markdown("<div style='max-width:900px; margin:20px auto;'>", unsafe_allow_html=True)
-        st.markdown("### ✏️ Edit message")
-        message_to_edit = chat["messages"][idx]["content"]
-        edited_prompt = st.text_area("Edit your message:", value=message_to_edit, height=200, key="edit_text_area_focus")
-        c1, c2 = st.columns([1,1])
-        with c1:
-            if st.button("✅ Save & Submit", use_container_width=True):
-                chat["messages"][idx]["content"] = edited_prompt
-                st.session_state["chats"][cur]["messages"] = chat["messages"][:idx + 1]
-                if st.session_state.get("share_link"):
-                    st.session_state.pop("share_link", None)
-                st.session_state["editing_index"] = None
-                try:
-                    st.experimental_rerun()
-                except Exception:
-                    st.rerun()
-        with c2:
-            if st.button("❌ Cancel", use_container_width=True):
-                st.session_state["editing_index"] = None
-                try:
-                    st.experimental_rerun()
-                except Exception:
-                    st.rerun()
-        st.markdown("<p style='text-align:center;color:gray;font-size:13px;'>⚠️ Chatbot can make mistakes. © 2025 BAPAN GHOSH</p>", unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
-        st.stop()
+    
+    
 
 # ---------------- sidebar ----------------
 with st.sidebar:
-    # --- TELEPORT BUTTON (Header Share) ---
     if st.button("🔗 Share", key="teleport_share", help="Share Chat"):
         try:
             cur = st.session_state.get("current")
@@ -620,6 +564,8 @@ with st.sidebar:
         st.session_state["chats"][nid] = {"title": "New Chat", "messages": []}
         st.session_state["current"] = nid
         st.session_state["editing_index"] = None
+        st.session_state["memory_summary"] = "" 
+        st.session_state["temp_vision_input"] = None
         st.rerun()
 
     st.write("")
@@ -635,6 +581,8 @@ with st.sidebar:
                 if st.button(chat_item["title"], key=f"open_{cid}", use_container_width=True):
                     st.session_state["current"] = cid
                     st.session_state["editing_index"] = None
+                    st.session_state["memory_summary"] = "" 
+                    st.session_state["temp_vision_input"] = None
                     if st.session_state.get("share_link"):
                         st.session_state.pop("share_link", None)
                     st.rerun()
@@ -647,7 +595,6 @@ with st.sidebar:
                     st.rerun()
 
         # --- OPTIONS MENU (Rename/Delete/Share) ---
-        # Yeh tabhi dikhega jab '...' dabaya ho
         if st.session_state.get("options_target"):
             t = st.session_state["options_target"]
             st.markdown("---")
@@ -665,6 +612,7 @@ with st.sidebar:
                     st.session_state["current"] = next(iter(st.session_state["chats"]), str(uuid.uuid4()))
                     if st.session_state["current"] not in st.session_state["chats"]:
                         st.session_state["chats"][st.session_state["current"]] = {"title": "New Chat", "messages": []}
+                        st.session_state["memory_summary"] = ""
                 st.session_state["options_target"] = None
                 st.rerun()
             
@@ -715,12 +663,9 @@ if st.session_state.get("open_share_popup") and st.session_state.get("share_link
     # 1. CSS: Isse hum Native Streamlit Box ko "Popup" jaisa banayenge
     st.markdown("""
     <style>
-        /* Background ko dhundhla karna */
         .stApp {
-            /* Background blur trick */
         }
         
-        /* Expander ko screen ke beech mein fix karna (Popup Effect) */
         div[data-testid="stExpander"] {
             position: fixed !important;
             top: 50% !important;
@@ -734,12 +679,10 @@ if st.session_state.get("open_share_popup") and st.session_state.get("share_link
             border: 1px solid #e0e0e0 !important;
         }
         
-        /* Expander ke upar ki line (Header) ko chupana */
         div[data-testid="stExpander"] summary {
             display: none !important;
         }
         
-        /* Close button styling */
         div[data-testid="stExpander"] button {
             border: 1px solid #ddd;
             background: #f9f9f9;
@@ -782,7 +725,7 @@ st.markdown("""
         z-index: 9000;
         display: flex;
         align-items: center;
-        padding-left: 280px; /* Sidebar width */
+        padding-left: 280px; 
     }
     
     /* 2. Hide Default Streamlit Header */
@@ -792,7 +735,6 @@ st.markdown("""
     .main .block-container { padding-top: 80px !important; }
 
     /* 4. TELEPORT MAGIC: Target the Share Button inside Sidebar */
-    /* Hum sidebar ke 'Share' button ko pakad kar Header mein fix kar rahe hain */
     [data-testid="stSidebar"] [data-testid="stVerticalBlock"] div.stButton:has(button[title="Share Chat"]) {
         position: fixed !important;
         top: 12px !important;
@@ -801,7 +743,6 @@ st.markdown("""
         z-index: 10000 !important;
     }
     
-    /* Styling the Teleported Button */
     [data-testid="stSidebar"] button[title="Share Chat"] {
         background-color: #0d6efd;
         color: white;
@@ -814,7 +755,6 @@ st.markdown("""
         background-color: #0b5ed7;
     }
     
-    /* Mobile Fix */
     @media(max-width: 600px) {
         .fixed-header { padding-left: 60px; }
     }
@@ -841,34 +781,31 @@ st.markdown(f"<script>window._latestShareLink = '{_latest}'; window._openSharePo
 
 # ---------------- MAIN CHAT AREA (Fixed Visibility & Position) ----------------
 
-# 1. CSS MAGIC: Edit button ko chupane aur hover pe dikhane ke liye (Robust)
+import streamlit as st
+import time # Imported just to simulate the bot delay
+
+# --- 1. SESSION STATE INITIALIZATION ---
+# Initialize chat history and flags if they don't exist
+if "chats" not in st.session_state:
+    st.session_state["chats"] = {"default": {"messages": []}}
+if "current" not in st.session_state:
+    st.session_state["current"] = "default"
+if "editing_index" not in st.session_state:
+    st.session_state["editing_index"] = None
+
+# Get current chat data
+cur = st.session_state["current"]
+chat = st.session_state["chats"][cur]
+
+# ---------------- CSS FOR EDIT BUTTON & SPINNER ----------------
 st.markdown("""
 <style>
-    /* By Default: Chat Message ke andar wala har Button invisible rahega */
     div[data-testid="stChatMessage"] div.stButton button {
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        border: none;
-        background: transparent;
-        color: gray;
+        opacity: 0; transition: opacity 0.3s ease; border: none; background: transparent; color: gray;
     }
-
-    /* Desktop Hover: Jab mouse message pe aaye, tab button dikhao */
-    div[data-testid="stChatMessage"]:hover div.stButton button {
-        opacity: 1;
-        background: #f0f2f6; /* Thoda highlight */
-    }
-
-    /* Mobile: Hover nahi hota, isliye hamesha thoda sa dikhao */
+    div[data-testid="stChatMessage"]:hover div.stButton button { opacity: 1; background: #f0f2f6; }
     @media (hover: none) {
-        div[data-testid="stChatMessage"] div.stButton button {
-            opacity: 0.5 !important;
-        }
-        /* Touch karne pe full dikhe */
-        div[data-testid="stChatMessage"] div.stButton button:active {
-            opacity: 1 !important;
-            background: #e0e0e0;
-        }
+        div[data-testid="stChatMessage"] div.stButton button { opacity: 0.5 !important; }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -877,123 +814,57 @@ chat_container = st.container()
 cur = st.session_state["current"]
 chat = st.session_state["chats"].get(cur, {"title": "New Chat", "messages": []})
 
-# 2. CHAT HISTORY DISPLAY
+# ---------------- 3. DISPLAY CHAT HISTORY (FIXED ALIGNMENT) ----------------
 with chat_container:
     for index, m in enumerate(chat["messages"]):
         with st.chat_message(m["role"]):
-            # User Message Logic
-            if m["role"] == "user":
-                c1, c2 = st.columns([19, 1])
+            
+            # 1. Check: Kya yeh message edit ho raha hai?
+            if st.session_state.get("editing_index") == index:
+                
+                # --- EDIT MODE ---
+                new_text = st.text_area("Edit message:", value=m["content"], height=100, key=f"edit_area_{index}")
+                c1, c2 = st.columns([1, 4])
+                
+                # Save Button
                 with c1:
-                    # Line breaks fix
-                    st.markdown(m["content"].replace("\n", "  \n"))
-                with c2:
-                    # Button ab CSS se control hoga
-                    if st.button("✏️", key=f"edit_btn_{index}", help="Edit"):
-                        st.session_state["editing_index"] = index
+                    if st.button("✅ Save", key=f"save_{index}", use_container_width=True):
+                        chat["messages"][index]["content"] = new_text
+                        chat["messages"] = chat["messages"][:index + 1] # Future delete
+                        st.session_state["chats"][cur] = chat
+                        st.session_state["editing_index"] = None
                         st.rerun()
-            # Assistant Message Logic
+                
+                # Cancel Button
+                with c2:
+                    if st.button("❌ Cancel", key=f"cancel_{index}"):
+                        st.session_state["editing_index"] = None
+                        st.rerun()
+
+            # 2. Else block bilkul 'if' ke seedh mein hai
             else:
-                st.markdown(m["content"])
+                # --- NORMAL MODE ---
+                if m["role"] == "user":
+                    col1, col2 = st.columns([19, 1])
+                    with col1:
+                        st.markdown(m["content"].replace("\n", "  \n"))
+                    with col2:
+                        # Edit button tabhi dikhega jab edit mode OFF ho
+                        if st.session_state.get("editing_index") is None:
+                            if st.button("✏️", key=f"edit_btn_{index}", help="Edit"):
+                                st.session_state["editing_index"] = index
+                                st.rerun()
+                else:
+                    st.markdown(m["content"])
+# ---------------- 4. TYPING INDICATOR & STREAMING (ICONIC SPEED ANIMATION) ----------------
 
-# ---------------- EDITING UI (Fallback) ----------------
-if st.session_state.get("editing_index") is not None:
-    idx = st.session_state["editing_index"]
-    
-    # Validation
-    if isinstance(idx, int) and 0 <= idx < len(chat["messages"]) and chat["messages"][idx]["role"] == "user":
-        message_to_edit = chat["messages"][idx]["content"]
-        
-        st.markdown("---")
-        st.markdown("### ✏️ Edit your message")
-        edited_prompt = st.text_area("Edit:", value=message_to_edit, height=100, key="edit_text_area")
-        
-        c1, c2 = st.columns(2)
-        with c1:
-            if st.button("✅ Save & Submit", use_container_width=True):
-                chat["messages"][idx]["content"] = edited_prompt
-                chat["messages"] = chat["messages"][:idx + 1]
-                st.session_state["chats"][cur] = chat
-                st.session_state["editing_index"] = None
-                st.rerun()
-        with c2:
-            if st.button("❌ Cancel", use_container_width=True):
-                st.session_state["editing_index"] = None
-                st.rerun()
-        st.stop() # Stop execution to focus on edit box
-    else:
-        st.session_state["editing_index"] = None
-        st.rerun()
+# --- IMPORTS ---
+import datetime
+import pytz
+import random
+import time
+import PIL.Image
 
-# ---------------- INPUT & GENERATION LOGIC ----------------
-else:
-    import datetime
-    import pytz
-    import random
-    import time
-    import PIL.Image
-    
-    # --- 1. SETUP VARIABLES ---
-    if "uploader_key" not in st.session_state:
-        st.session_state["uploader_key"] = str(random.randint(1000, 9999))
-    
-    # Initialize temp storage for current turn
-    vision_content = None
-    pdf_text_content = ""
-    display_text = ""
-
-    # --- 2. ATTACH BUTTON (Just above Input) ---
-    # Simple Popover - No complex CSS needed, sits perfectly above input
-    with st.container():
-        col1, col2 = st.columns([0.1, 0.9])
-        with col1:
-            with st.popover("📎", help="Attach Image or PDF"):
-                uploaded = st.file_uploader("Select File", 
-                                          type=["png", "jpg", "jpeg", "pdf"], 
-                                          key=st.session_state["uploader_key"])
-                if uploaded:
-                    st.toast(f"Attached: {uploaded.name}", icon="✅")
-
-    # --- 3. INPUT HANDLING ---
-    prompt = st.chat_input("Type your message...")
-    
-    if prompt:
-        display_text = prompt
-        
-        # A. Handle File Logic (If file exists)
-        if uploaded:
-            # Case 1: Image
-            if "image" in uploaded.type:
-                img = PIL.Image.open(uploaded)
-                vision_content = [prompt, img]
-                display_text = f"{prompt}\n\n*(📸 Image Attached: {uploaded.name})*"
-            
-            # Case 2: PDF
-            elif "pdf" in uploaded.type:
-                try:
-                    import PyPDF2
-                    pdf_reader = PyPDF2.PdfReader(uploaded)
-                    pdf_text = ""
-                    for page in pdf_reader.pages: pdf_text += page.extract_text() + "\n"
-                    pdf_text_content = f"PDF CONTENT ({uploaded.name}):\n{pdf_text}"
-                    display_text = f"{prompt}\n\n*(📄 PDF Attached: {uploaded.name})*"
-                except: pass
-            
-            # Reset Uploader for next time (Auto-Reset Logic)
-            st.session_state["uploader_key"] = str(random.randint(1000, 9999))
-
-        # B. Save State for Generation
-        st.session_state["temp_vision_input"] = vision_content
-        st.session_state["temp_pdf_content"] = pdf_text_content
-
-        # C. Append to History & Rerun
-        chat["messages"].append({"role": "user", "content": display_text})
-        if chat["title"] == "New Chat":
-            chat["title"] = prompt[:30] + "…" if len(prompt) > 30 else prompt
-        st.session_state["chats"][cur] = chat
-        st.rerun()
-
-# ---------------- TYPING INDICATOR & STREAMING ----------------
 if chat["messages"] and chat["messages"][-1]["role"] == "user":
     
     with chat_container:
@@ -1004,159 +875,238 @@ if chat["messages"] and chat["messages"][-1]["role"] == "user":
             vision_data = st.session_state.get("temp_vision_input")
             pdf_data = st.session_state.get("temp_pdf_content", "")
 
-            # --- TERA ANIMATION FUNCTION (As Requested) ---
+            # --- ICONIC ANIMATION FUNCTION ---
             def render_animation(text, icon):
                 anim_html = f"""
-                <div style='display:flex; gap:10px; align-items:center; font-weight:600; padding: 5px 0; color:#333; font-family:sans-serif;'>
-                  <div>{icon} {text}</div>
-                  <div id='dots' style='font-weight:600; color:#666;'>• • •</div>
-                </div>
                 <style>
-                  @keyframes blink {{ 0% {{opacity:0.2}} 50% {{opacity:1}} 100% {{opacity:0.2}} }}
-                  #dots span {{ animation: blink 1.2s infinite; }}
+                    /* Container for Spinner and Icon */
+                    .loader-box {{
+                        position: relative;
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }}
+
+                    /* 1. The Fast Spinning Ring */
+                    .speed-ring {{
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        border: 3px solid transparent;
+                        border-top: 3px solid #3498db;
+                        border-right: 3px solid #e74c3c; /* Do rang taaki speed dikhe */
+                        border-radius: 50%;
+                        animation: fast-spin 0.6s linear infinite, color-shift 3s linear infinite;
+                        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+                    }}
+
+                    /* 2. The Static Icon (Beech mein fix) */
+                    .static-icon {{
+                        position: relative;
+                        font-size: 14px; /* Chota size */
+                        z-index: 2;
+                        /* No animation here -> Icon nahi ghumega */
+                    }}
+
+                    /* 3. Super Fast Spin Animation */
+                    @keyframes fast-spin {{ 
+                        0% {{ transform: rotate(0deg); }} 
+                        100% {{ transform: rotate(360deg); }} 
+                    }}
+                    
+                    /* 4. Iconic Color Shift */
+                    @keyframes color-shift {{
+                        0% {{ border-top-color: #3498db; border-right-color: #e74c3c; }}
+                        25% {{ border-top-color: #9b59b6; border-right-color: #2ecc71; }}
+                        50% {{ border-top-color: #f1c40f; border-right-color: #e67e22; }}
+                        75% {{ border-top-color: #1abc9c; border-right-color: #34495e; }}
+                        100% {{ border-top-color: #3498db; border-right-color: #e74c3c; }}
+                    }}
+
+                    /* 5. Blinking Dots */
+                    .dot {{ animation: blink 1.4s infinite both; font-weight: 800; }}
+                    .d1 {{ animation-delay: 0s; }}
+                    .d2 {{ animation-delay: 0.2s; }}
+                    .d3 {{ animation-delay: 0.4s; }}
+                    @keyframes blink {{ 0% {{opacity: 0.2;}} 20% {{opacity: 1;}} 100% {{opacity: 0.2;}} }}
+
+                    .status-text {{
+                        font-family: 'Segoe UI', sans-serif; 
+                        font-weight: 600; 
+                        color: #444; 
+                        font-size: 15px;
+                        margin-left: 15px;
+                        letter-spacing: 0.5px;
+                    }}
                 </style>
-                <script>
-                  var d = document.getElementById('dots');
-                  if (d) {{ d.innerHTML = "<span>•</span><span style='animation-delay:0.2s'>•</span><span style='animation-delay:0.4s'>•</span>"; }}
-                </script>
+
+                <div style='display:flex; align-items:center; padding: 10px 0;'>
+                    <div class="loader-box">
+                        <div class="speed-ring"></div>
+                        <div class="static-icon">⏳</div>
+                    </div>
+                    
+                    <div class="status-text">
+                        {icon} {text}<span class="dot d1">.</span><span class="dot d2">.</span><span class="dot d3">.</span>
+                    </div>
+                </div>
                 """
                 with placeholder:
-                    components.html(anim_html, height=45)
+                    components.html(anim_html, height=60)
 
-            # 1. Default Animation
-            render_animation("Thinking", "🤔")
-            
-            reply_accum = ""
-            # Clean message for logic checks
+            # --- INTENT DETECTION ---
             user_msg = chat["messages"][-1]["content"].split("\n\n*(")[0]
             msg_lower = user_msg.lower()
             
-            # Intent Logic
-            is_image_gen = any(w in msg_lower for w in ["generate", "create", "bana de"]) and \
-                           any(w in msg_lower for w in ["image", "pic", "photo", "apple"])
-            is_search = any(w in msg_lower for w in ["score", "match", "live", "news", "vs", "price"]) and not is_image_gen
+            is_image_gen = any(w in msg_lower for w in ["generate", "create", "bana de", "draw"]) and \
+                           any(w in msg_lower for w in ["image", "pic", "photo", "apple", "cat", "dog"])
+            is_search = any(w in msg_lower for w in ["score", "match", "live", "news", "vs", "price", "weather"]) and not is_image_gen
+            is_research = 'is_research_query' in globals() and is_research_query(user_msg)
 
+            # --- SHOW ANIMATION ---
+            if vision_data: render_animation("Analyzing Image", "👁️")
+            elif is_image_gen: render_animation("Creating Image", "🎨")
+            elif is_search: render_animation("Searching Web", "🌐")
+            elif is_research: render_animation("Researching", "🧠")
+            else: render_animation("Thinking", "🤔")
+
+            reply_accum = ""
             try:
-                # --- SCENARIO A: IMAGE GENERATION ---
+                # A. IMAGE
                 if is_image_gen:
-                    render_animation("Creating Image", "🎨")
-                    img_url = generate_fake_image(user_msg)
-                    if not img_url: img_url = "https://picsum.photos/800/600"
-                    
-                    # Clear animation & Show Result
+                    img_url = generate_fake_image(user_msg) if 'generate_fake_image' in globals() else "https://picsum.photos/800/600"
                     placeholder.empty()
                     st.markdown(f"Here is your image for: **{user_msg}**")
                     st.image(img_url, caption=user_msg)
                     reply_accum = f"Here is your image for: **{user_msg}**\n\n![Image]({img_url})"
 
-# --- SCENARIO B: WEB SEARCH ---
+                # B. SEARCH
                 elif is_search:
-                    render_animation("Searching Web", "🌐")
-                    
                     try:
-                        # Check if search_web function exists
-                        if 'search_web' not in globals():
-                            raise NameError("Search function not defined")
-
-                        # Smart Query Cleaning
-                        search_q = user_msg.replace("abhi", "").strip()
-                        search_res = search_web(search_q)
+                        if 'search_web' not in globals(): raise NameError("Search func missing")
+                        search_res = search_web(user_msg.replace("abhi", "").strip())
+                        if not search_res: raise ValueError("Empty")
+                        render_animation("Analyzing Data", "⚡")
                         
-                        if not search_res: 
-                            raise ValueError("No data found")
-                        
-                        render_animation("Analyzing", "⚡")
-                        
-                        # Prompt construction
                         IST = pytz.timezone('Asia/Kolkata')
                         current_time = datetime.datetime.now(IST).strftime("%d %b %Y, %I:%M %p")
                         full_prompt = f"SYSTEM: Time {current_time}. QUERY: {user_msg}. DATA: {search_res}. Answer accurately."
                         
-                        # Stream Response
                         placeholder.empty()
                         st_stream = st.empty()
                         for chunk in ask_gemini_smart_stream(full_prompt):
                             reply_accum += chunk
                             st_stream.markdown(reply_accum + "▌")
                         st_stream.markdown(reply_accum)
-
-                    except Exception as e:
-                        # Agar search_web nahi mila ya koi error aaya, toh yeh fallback message aayega
+                    except:
                         placeholder.empty()
-                        reply_accum = "I'm sorry ! I can't provide answer in this question, please Ask something else..."
-                        st.markdown(reply_accum)
+                        pass 
 
-                # --- SCENARIO C: MULTI-AGENT (TERA LOGIC) ---
-                elif 'is_research_query' in globals() and is_research_query(user_msg):
-                    render_animation("Researching", "🧠")
+                # C. RESEARCH
+                elif is_research:
                     research_out = run_research_agent(user_msg)
-                    
                     render_animation("Summarizing", "📝")
                     summary_out = run_summarizer_agent(research_out)
-                    
-                    reply_accum = (
-                        f"### 🧠 Research Findings\n\n{research_out}\n\n"
-                        f"### 📝 Summary\n\n{summary_out}\n\n"
-                        "🤖 Research & Summary Completed ✅"
-                    )
+                    reply_accum = f"### 🧠 Research Findings\n\n{research_out}\n\n### 📝 Summary\n\n{summary_out}\n\n🤖 Completed ✅"
                     placeholder.markdown(reply_accum)
 
-# --- SCENARIO D: NORMAL STREAMING (TEXT / VISION / PDF) ---
-                else:
+                # D. NORMAL CHAT
+                if not reply_accum:
                     role = st.session_state.get('agent_role', 'assistant')
                     IST = pytz.timezone('Asia/Kolkata')
                     current_time = datetime.datetime.now(IST).strftime("%d %b %Y, %I:%M %p")
-                    
-                    # System Prompt Setup
-                    sys_p = f"You are a helpful {role}. Current Time: {current_time}.\n"
-                    sys_p += "Response Guidelines:\n1. Use triple backticks for code.\n2. Be concise but helpful."
-                    
-                    # Inject PDF Context if exists
-                    if pdf_data: sys_p += f"\n\nREFERENCE DOCUMENT CONTEXT:\n{pdf_data}\n(Answer based on this context if relevant)"
-                    
+                    sys_p = f"You are a helpful {role}. Time: {current_time}."
+                    if pdf_data: sys_p += f"\nCONTEXT:\n{pdf_data}"
                     mem = st.session_state.get("memory_summary", "")
-                    if mem: sys_p += f"\nUser Summary Context: {mem}"
+                    if mem: sys_p += f"\nSummary: {mem}"
 
-                    # Handling Vision vs Text
                     if vision_data:
-                          render_animation("Analyzing Image", "👁️")
-                          # Vision requests usually handle single turn best
-                          response = genai.generate_content(vision_data)
-                          reply_accum = response.text
+                          if genai:
+                              response = genai.generate_content(vision_data)
+                              reply_accum = response.text
+                          else:
+                              reply_accum = "⚠️ Gemini Model not loaded."
                           placeholder.markdown(reply_accum)
-                          st.session_state["temp_vision_input"] = None # Clear
+                          st.session_state["temp_vision_input"] = None 
                     else:
-                        # Normal Text Stream with HISTORY
-                        # We pass the existing chat history EXCLUDING the latest message
-                        current_history = chat["messages"][:-1] 
-                        
-                        # Call updated function with history
+                        current_history = chat["messages"][:-1]
                         for chunk in ask_gemini_smart_stream(user_msg, system_prompt=sys_p, history=current_history):
                             if chunk:
                                 reply_accum += chunk
                                 placeholder.markdown(reply_accum + "▌")
                         placeholder.markdown(reply_accum)
 
-            # --- ERROR HANDLING ---
             except Exception as e:
-                import traceback
-                traceback.print_exc()
-                reply_accum = f"⚠️ **Something went wrong:** {str(e)}"
+                reply_accum = f"⚠️ **Error:** {str(e)}"
                 placeholder.error(reply_accum)
 
-            # --- SAVE CONVERSATION HISTORY ---
-            # Save whatever reply was generated (even error messages)
+            # SAVE & RERUN
             if reply_accum:
                 chat["messages"].append({"role": "assistant", "content": reply_accum})
                 st.session_state["chats"][cur] = chat
-                
-                # Update memory summary
                 if "update_memory_summary" in globals():
-                    try:
-                        st.session_state["memory_summary"] = update_memory_summary(chat["messages"])
-                    except:
-                        pass
-                
-                # Refresh UI
+                    try: st.session_state["memory_summary"] = update_memory_summary(chat["messages"])
+                    except: pass
                 st.rerun()
+# ---------------- 5. INPUT AREA ----------------
+else:
+    # Setup Uploader Key
+    if "uploader_key" not in st.session_state:
+        st.session_state["uploader_key"] = str(random.randint(1000, 9999))
+    
+    # Init Variables
+    vision_content = None
+    pdf_text_content = ""
+    display_text = ""
+
+    # Layout for File Uploader
+    with st.container():
+        col1, col2 = st.columns([0.1, 0.9])
+        with col1:
+            with st.popover("📎", help="Attach File"):
+                uploaded = st.file_uploader("Upload", type=["png", "jpg", "pdf"], key=st.session_state["uploader_key"])
+                if uploaded:
+                    st.toast(f"Attached: {uploaded.name}", icon="✅")
+
+    # Main Chat Input
+    prompt = st.chat_input("Type your message...")
+    
+    if prompt:
+        display_text = prompt
+        
+        # Handle File Attachment
+        if uploaded:
+            if "image" in uploaded.type:
+                img = PIL.Image.open(uploaded)
+                vision_content = [prompt, img]
+                display_text = f"{prompt}\n\n*(📸 Image Attached: {uploaded.name})*"
+            
+            elif "pdf" in uploaded.type:
+                try:
+                    import PyPDF2
+                    pdf_reader = PyPDF2.PdfReader(uploaded)
+                    pdf_text = ""
+                    for page in pdf_reader.pages: pdf_text += page.extract_text() + "\n"
+                    pdf_text_content = f"PDF CONTENT ({uploaded.name}):\n{pdf_text}"
+                    display_text = f"{prompt}\n\n*(📄 PDF Attached: {uploaded.name})*"
+                except: pass
+            
+            # Reset Uploader Key
+            st.session_state["uploader_key"] = str(random.randint(1000, 9999))
+
+        # Save Temp State
+        st.session_state["temp_vision_input"] = vision_content
+        st.session_state["temp_pdf_content"] = pdf_text_content
+
+        # Save User Message & Trigger Bot
+        chat["messages"].append({"role": "user", "content": display_text})
+        
+        # Set Title if New Chat
+        if chat["title"] == "New Chat":
+            chat["title"] = prompt[:30] + "…" if len(prompt) > 30 else prompt
+            
+        st.session_state["chats"][cur] = chat
+        st.rerun()
 st.markdown("<p id='app-footer'>🤖 Multi-Agent Edition • ⚠️ Chatbot may make mistakes • © 2025 BAPAN GHOSH</p>", unsafe_allow_html=True)
